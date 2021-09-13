@@ -1,0 +1,119 @@
+--[[
+# Minimalis Conky 1.3
+# Author : archit3x
+# Release date : 4 December 2020
+# Tested on : Archlinux ARM - XFCE Desktop
+# Email : archit3x@archlinux.us
+# Feel free to modity this script ;)
+]]
+
+conky.config = {
+    alignment = 'top_right',
+    xinerama_head = 2,
+    background = false,
+    border_width = 1,
+    cpu_avg_samples = 2,
+    default_color = 'gray',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    color1 = '#1793d1',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    extra_newline = false,
+    font = 'Roboto Mono:size=7',
+    gap_x = 10,
+    gap_y = 10,
+    minimum_height = 250,
+    minimum_width = 300,
+    maximum_width = 300,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_ncurses = false,
+    out_to_stderr = false,
+    out_to_x = true,
+    own_window = true,
+    own_window_transparent = false,
+    own_window_argb_visual = true,
+    own_window_type = 'desktop',
+    own_window_hints ='undecorated,sticky,skip_taskbar,skip_pager,above',
+    own_window_argb_visual = yes,
+    own_window_argb_value = 180,
+    show_graph_range = false,
+    show_graph_scale = false,
+    stippled_borders = 0,
+    update_interval = 0.75,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+    top_name_width = 8,
+    short_units = yes
+}
+
+conky.text = [[
+${goto 35}${color1}${time %b %e %l:%M} MST ${alignr}${utime %b %e %H:%M} UTC
+#${color1}${font ConkySymbols:size=20}t${font} ${voffset -10}GNU/Linux» $hr ${color}
+#${color1}${goto 35}OS     : ${color}${execi 86400 cat `ls -atr /etc/*-release | tail -2` | grep "PRETTY_NAME" | cut -d= -f2 |  sed 's/"//g'}
+#${color1}${goto 35}Kernel : ${color}$kernel on $machine
+#
+# processors
+${color1}${font ConkySymbols:size=16}f${font} ${voffset -10} System» $hr${color}
+${goto 35}${color}${font :size=18}${voffset 5}${cpu cpu0}%${font}${alignr}${voffset -15}${cpugraph cpu0 40,120 ffffff 1793d1 1 -t}
+${color1}${goto 35}Core 1 : ${color}${alignr}${cpu cpu1}% ${cpubar cpu1 4,125}
+${color1}${goto 35}Core 2 : ${color}${alignr}${cpu cpu2}% ${cpubar cpu2 4,125}
+${color1}${goto 35}Core 3 : ${color}${alignr}${cpu cpu3}% ${cpubar cpu3 4,125}
+${color1}${goto 35}Core 4 : ${color}${alignr}${cpu cpu4}% ${cpubar cpu4 4,125}
+${color1}${goto 35}Core 5 : ${color}${alignr}${cpu cpu5}% ${cpubar cpu5 4,125}
+${color1}${goto 35}Core 6 : ${color}${alignr}${cpu cpu6}% ${cpubar cpu6 4,125}
+${color1}${goto 35}Core 7 : ${color}${alignr}${cpu cpu7}% ${cpubar cpu7 4,125}
+${color1}${goto 35}Core 8 : ${color}${alignr}${cpu cpu8}% ${cpubar cpu8 4,125}
+${color1}${goto 35}1080Ti : ${color}${nvidia gpufreq}GHz  ${alignr}${nvidia gpuutil}% ${execbar 4,75 nvidia-smi -q -i 0 -d utilization | grep 'Gpu' | awk 'NR==1{print $3}'}
+
+# memory
+${color1}${font ConkySymbols:size=16}J${font} ${voffset -10}Memory» $hr${color}
+${color1}${goto 35}RAM : ${color}$mem ${alignr}${memperc}% ${membar 4,85}
+${color1}${goto 35}Swap: ${color}$swap ${alignr}$swapperc% ${swapbar 4,85}
+
+# temps
+${color1}${font ConkySymbols:size=16}h${font} ${voffset -10} Temperature» $hr${color}
+${color1}${goto 35}i7-9700K : ${color}${exec sensors | grep 'Package id 0' | awk 'NR==1{print $4}'} ${alignr}${color1}GTX 1080Ti : ${color}${nvidia gputemp}°C
+#${color1}${goto 35}Core 1 : ${color}${exec sensors | grep 'Core 0' | awk 'NR==1{print $3}'}${color1}${alignr}Core 2 : ${color}${exec sensors | grep 'Core 1' | awk 'NR==1{print $3}'}
+#${color1}${goto 35}Core 3 : ${color}${exec sensors | grep 'Core 2' | awk 'NR==1{print $3}'}${color1}${alignr}Core 4 : ${color}${exec sensors | grep 'Core 3' | awk 'NR==1{print $3}'}
+#${color1}${goto 35}Core 5 : ${color}${exec sensors | grep 'Core 4' | awk 'NR==1{print $3}'}${color1}${alignr}Core 6 : ${color}${exec sensors | grep 'Core 5' | awk 'NR==1{print $3}'}
+#${color1}${goto 35}Core 7 : ${color}${exec sensors | grep 'Core 6' | awk 'NR==1{print $3}'}${color1}${alignr}Core 8 : ${color}${exec sensors | grep 'Core 7' | awk 'NR==1{print $3}'}
+# processes
+#${color1}${font ConkySymbols:size=16}n${font} ${voffset -10} Processes» $hr${color}
+#${color1}${goto 35}CPU usage ${alignr}Memory Usage${color}
+#${color1}${goto 35}${stippled_hr}${color}
+#${goto 35}${top name 1}${exec cut -c 1-5} ${color}${top cpu 1}% ${alignr}${top_mem name 1}${top_mem mem_res 1}
+#${goto 35}${top name 1} ${color}${top cpu 1}% ${alignr}${top_mem name 1}${top_mem mem_res 1}
+#${goto 35}${top name 2} ${color}${top cpu 2}% ${alignr}${top_mem name 2} ${top_mem mem_res 2}
+#${goto 35}${top name 3} ${color}${top cpu 3}% ${alignr}${top_mem name 3} ${top_mem mem_res 3}
+#${goto 35}${top name 4} ${color}${top cpu 4}% ${alignr}${top_mem name 4} ${top_mem mem_res 4}
+#${goto 35}${top name 5} ${color}${top cpu 5}% ${alignr}${top_mem name 5} ${top_mem mem_res 5}
+#${goto 35}${top name 6} ${color}${top cpu 6}% ${alignr}${top_mem name 6} ${top_mem mem_res 6}
+#${goto 35}${top name 7} ${color}${top cpu 7}% ${alignr}${top_mem name 7} ${top_mem mem_res 7}
+#${goto 35}${top name 8} ${color}${top cpu 8}% ${alignr}${top_mem name 8} ${top_mem mem_res 8}
+#${color1}${goto 35}Processes: ${color}$processes ${color1}Running: ${color}$running_processes
+
+# storage
+${color1}${font ConkySymbols:size=16}k${font} ${voffset -10} Storage» $hr${color}
+${color1}${goto 35}/ : ${color}${fs_used_perc /}% ${alignr}${color1}R : ${color}${diskio_read /dev/sdc1} ${color1} W: ${color}${diskio_write /dev/sdc1}
+${color1}${goto 35}/home : ${color}${fs_used_perc /home}% ${alignr}${color1}R : ${color}${diskio_read /dev/sda6} ${color1} W: ${color}${diskio_write /dev/sda6}
+${color1}${goto 35}Glacier : ${color}${fs_used_perc /media/kevin/Glacier}% ${alignr}${color1}R : ${color}${diskio_read /dev/sdb} ${color1} W: ${color}${diskio_write /dev/sdb}
+
+# network
+#${color1}${font ConkySymbols:size=16}b${font} ${voffset -10} Network (enp2s0)» $hr${color}
+#${color1}${goto 35}Public IP : ${color}${curl icanhazip.com}
+#${color1}${goto 35}Down : ${color}${downspeedf enp2s0} KiB/s ${alignr}${color1}Up: ${color}${upspeedf enp2s0} KiB/s 
+#${goto 35}${downspeedgraph enp2s0 25,90 1793d1 d12424 5000 -t} ${alignr}${upspeedgraph enp2s0 25,90 1793d1 d12424 800 -t}
+
+# docker
+${color1}${font ConkySymbols:size=16}n${font} ${voffset -10} Docker» $hr${color}
+${execpi 1 docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}" | sed 's/^/${goto 35}/'}
+
+${goto 35}
+]]
