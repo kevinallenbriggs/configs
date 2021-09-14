@@ -111,6 +111,8 @@ alias htop='htop -d 7.5'
 
 alias ll='ls -lahF'
 
+alias pwd='pwd -P'
+
 alias find-big='find -type f -exec du -Sh {} + | sort -rh | head -n 5'
 
 function dwp-cli
