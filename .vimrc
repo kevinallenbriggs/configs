@@ -25,6 +25,7 @@ filetype plugin indent on    " required
 
 
 
+
 "--------- Visuals ---------"
 colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
@@ -37,6 +38,9 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+
+
+
 
 
 "--------- File Browsing & Search ---------"
@@ -63,6 +67,7 @@ let NERDTreeHijackNetrw=0	" don't let NERDTree override vinegar
 
 
 
+
 "--------- Mappings ---------"
 
 "exit various modes by pressing ,, 
@@ -83,6 +88,7 @@ vmap <leader>c :tabclose<cr>
 
 "quicker toggling between buffers
 nmap <leader>b <C-^>
+
 
 
 
