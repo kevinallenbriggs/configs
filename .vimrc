@@ -81,6 +81,9 @@ imap <leader>c :tabclose<cr>
 nmap <leader>c :tabclose<cr>
 vmap <leader>c :tabclose<cr>
 
+"quicker toggling between buffers
+nmap <leader>b <C-^>
+
 
 
 

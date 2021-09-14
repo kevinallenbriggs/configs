@@ -104,6 +104,7 @@ export PATH=$HOME/bin:$PATH
 
 alias ez='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
+alias ev='vim ~/.vimrc'
 alias update='sudo apt update && apt list --upgradable'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
