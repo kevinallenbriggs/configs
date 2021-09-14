@@ -3,6 +3,23 @@ let mapleader = ','	" namespace shortcuts with a comma
 set number		" show line numbers
 set cursorline		" highlight the line the cursor is on
 
+
+
+
+
+"--------- XDebug --------"
+if !exists('g:vdebug_options')
+    let g:vdebug_options = {}
+endif
+
+if !empty($VIM_XDEBUG_PORT)
+	let g:vdebug_options.port = $XDEBUG_PORT
+endif
+
+
+
+
+
 "--------- Plugins ---------"
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -17,7 +34,7 @@ Plugin 'tpope/vim-vinegar'	"enhance the built-in directory browser (netrw)
 Plugin 'preservim/nerdtree'	"add a full-featured file system explorer
 Plugin 'ctrlpvim/ctrlp.vim'	"searching files with fuzzy matching
 Plugin 'sonph/onehalf'		"install a theme
-
+Plugin 'vim-vdebug/vdebug'	"DBGP debugger
 
 call vundle#end()            " all plugins must be loaded before this line
 filetype plugin indent on    " required
