@@ -65,8 +65,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git rsync docker)
 
+# Docker plugin autocompletion (see https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker)
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
