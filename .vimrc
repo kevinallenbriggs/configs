@@ -71,12 +71,12 @@ let NERDTreeHijackNetrw=0	" don't let NERDTree override vinegar
 "--------- Mappings ---------"
 
 "exit various modes by pressing ,, 
-imap <leader>, <Esc>
-vmap <leader>, <Esc>
-smap <leader>, <Esc>
-xmap <leader>, <Esc>
-cmap <leader>, <Esc>
-omap <leader>, <Esc>
+imap jj <Esc>
+vmap jj <Esc>
+smap jj <Esc>
+xmap jj <Esc>
+cmap jj <Esc>
+omap jj <Esc>
 
 "edit the .vimrc file
 nmap <leader>ev :tabedit $MYVIMRC<cr>
