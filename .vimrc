@@ -3,6 +3,8 @@ let mapleader = ','	" namespace shortcuts with a comma
 set number		" show line numbers
 set cursorline		" highlight the line the cursor is on
 
+
+
 "--------- Plugins ---------"
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -41,6 +43,10 @@ endif
 
 
 
+"--------- Splits ---------"
+set splitbelow
+set splitright
+
 
 
 "--------- File Browsing & Search ---------"
@@ -66,17 +72,15 @@ let NERDTreeHijackNetrw=0	" don't let NERDTree override vinegar
 
 
 
-
-
 "--------- Mappings ---------"
 
 "exit various modes by pressing ,, 
-imap jj <Esc>
-vmap jj <Esc>
-smap jj <Esc>
-xmap jj <Esc>
-cmap jj <Esc>
-omap jj <Esc>
+imap <leader>, <Esc>
+vmap <leader>, <Esc>
+smap <leader>, <Esc>
+xmap <leader>, <Esc>
+cmap <leader>, <Esc>
+omap <leader>, <Esc>
 
 "edit the .vimrc file
 nmap <leader>ev :tabedit $MYVIMRC<cr>
@@ -88,8 +92,6 @@ vmap <leader>c :tabclose<cr>
 
 "quicker toggling between buffers
 nmap <leader>b <C-^>
-
-
 
 
 
