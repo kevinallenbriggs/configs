@@ -121,6 +121,7 @@ alias pwd='pwd -P'
 alias find-big='find -type f -exec du -Sh {} + | sort -rh | head -n 5'
 
 alias dc='docker-compose'
+alias dcreset='dcd; dcud;'
 alias dcu='dc up'
 alias dcud='dcu -d'
 alias dcuf='dcud; dcl'
