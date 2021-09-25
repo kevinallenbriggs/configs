@@ -13,14 +13,14 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-vinegar'		"enhance the built-in directory browser (netrw)
-Plugin 'preservim/nerdtree'		"add a full-featured file system explorer
-Plugin 'ctrlpvim/ctrlp.vim'		"searching files with fuzzy matching
-Plugin 'sonph/onehalf'			"install a theme
-Plugin 'vim-airline/vim-airline'	"better status bar
-Plugin 'vim-airline/vim-airline-themes'	"themes compatible with improved status bar
+Plugin 'VundleVim/Vundle.vim'			" let Vundle manage Vundle, required
+Plugin 'tpope/vim-vinegar'			" enhance the built-in directory browser (netrw)
+Plugin 'preservim/nerdtree'			" add a full-featured file system explorer
+Plugin 'ctrlpvim/ctrlp.vim'			" searching files with fuzzy matching
+Plugin 'sonph/onehalf'				" install a theme
+Plugin 'vim-airline/vim-airline'		" better status bar
+Plugin 'vim-airline/vim-airline-themes'		" themes compatible with improved status bar
+Plugin 'garbas/vim-snipmate'			" snippets
 
 call vundle#end()            " all plugins must be loaded before this line
 filetype plugin indent on    " required
