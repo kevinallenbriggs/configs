@@ -20,6 +20,8 @@ Plugin 'ctrlpvim/ctrlp.vim'			" searching files with fuzzy matching
 Plugin 'sonph/onehalf'				" install a theme
 Plugin 'vim-airline/vim-airline'		" better status bar
 Plugin 'vim-airline/vim-airline-themes'		" themes compatible with improved status bar
+Plugin 'MarcWeber/vim-addon-mw-utils'           " snippets
+Plugin 'tomtom/tlib_vim'                        " snippets
 Plugin 'garbas/vim-snipmate'			" snippets
 
 call vundle#end()            " all plugins must be loaded before this line
@@ -73,7 +75,7 @@ let NERDTreeHijackNetrw=0	" don't let NERDTree override vinegar
 
 "--------- Mappings ---------"
 
-"exit various modes by pressing ,, 
+" exit various modes by pressing ,, 
 imap <leader>, <Esc>
 vmap <leader>, <Esc>
 smap <leader>, <Esc>
@@ -81,15 +83,18 @@ xmap <leader>, <Esc>
 cmap <leader>, <Esc>
 omap <leader>, <Esc>
 
-"edit the .vimrc file
+" edit the vim configuration file
 nmap <leader>ev :tabedit $MYVIMRC<cr>
 
-"easier tab closing
+" edit the snippets file
+nmap <leader>es :e .vim/snippets/<cr>
+
+" easier tab closing
 imap <leader>c :tabclose<cr>
 nmap <leader>c :tabclose<cr>
 vmap <leader>c :tabclose<cr>
 
-"quicker toggling between buffers
+" quicker toggling between buffers
 nmap <leader>b <C-^>
 
 
