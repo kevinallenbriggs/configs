@@ -23,6 +23,7 @@ Plugin 'vim-airline/vim-airline-themes'		" themes compatible with improved statu
 Plugin 'MarcWeber/vim-addon-mw-utils'           " snippets
 Plugin 'tomtom/tlib_vim'                        " snippets
 Plugin 'garbas/vim-snipmate'			" snippets
+Plugin 'tpope/vim-surround'			" easily edit surrounding text
 
 call vundle#end()            " all plugins must be loaded before this line
 filetype plugin indent on    " required
