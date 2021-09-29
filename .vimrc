@@ -28,6 +28,7 @@ Plugin 'tpope/vim-surround'			" easily edit surrounding text
 call vundle#end()            " all plugins must be loaded before this line
 filetype plugin indent on    " required
 
+let g:snipMate = { 'snippet_version' : 1 }
 
 
 "--------- Visuals ---------"
