@@ -154,6 +154,9 @@ alias gcm='git checkout main'
 # git push including tags
 alias gpt='gp; gp --tags'
 
+# always pull before a push
+alias gp='gl && git push'
+
 # provide autocomplete for the gem function https://unix.stackexchange.com/questions/28283/autocomplete-of-filename-in-directory
 function __gemComplete {
 	local cur={COMP_WORDS[COMP_WORD]}
