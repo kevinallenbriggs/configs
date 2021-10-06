@@ -89,6 +89,9 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# start or reconnect to a screen session on remote servers
+screen -R
+
 export PATH=$HOME/bin:$PATH
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
