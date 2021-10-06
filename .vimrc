@@ -3,6 +3,8 @@ let mapleader = ','	" namespace shortcuts with a comma
 set number		" show line numbers
 set cursorline		" highlight the line the cursor is on
 
+
+
 "--------- Plugins ---------"
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -11,24 +13,27 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-vinegar'	"enhance the built-in directory browser (netrw)
-Plugin 'preservim/nerdtree'	"add a full-featured file system explorer
-Plugin 'ctrlpvim/ctrlp.vim'	"searching files with fuzzy matching
-Plugin 'sonph/onehalf'		"install a theme
-
+Plugin 'VundleVim/Vundle.vim'			" let Vundle manage Vundle, required
+Plugin 'tpope/vim-vinegar'			" enhance the built-in directory browser (netrw)
+Plugin 'preservim/nerdtree'			" add a full-featured file system explorer
+Plugin 'ctrlpvim/ctrlp.vim'			" searching files with fuzzy matching
+Plugin 'sonph/onehalf'				" install a theme
+Plugin 'vim-airline/vim-airline'		" better status bar
+Plugin 'vim-airline/vim-airline-themes'		" themes compatible with improved status bar
+Plugin 'MarcWeber/vim-addon-mw-utils'           " snippets
+Plugin 'tomtom/tlib_vim'                        " snippets
+Plugin 'garbas/vim-snipmate'			" snippets
+Plugin 'tpope/vim-surround'			" easily edit surrounding text
 
 call vundle#end()            " all plugins must be loaded before this line
 filetype plugin indent on    " required
 
-
-
+let g:snipMate = { 'snippet_version' : 1 }
 
 
 "--------- Visuals ---------"
 colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+let g:airline_theme='distinguished'
 
 set t_CO=256		" force 256 colors on the terminal
 
@@ -40,6 +45,10 @@ if exists('+termguicolors')
 endif
 
 
+
+"--------- Splits ---------"
+set splitbelow
+set splitright
 
 
 
@@ -66,11 +75,9 @@ let NERDTreeHijackNetrw=0	" don't let NERDTree override vinegar
 
 
 
-
-
 "--------- Mappings ---------"
 
-"exit various modes by pressing ,, 
+" exit various modes by pressing ,, 
 imap <leader>, <Esc>
 vmap <leader>, <Esc>
 smap <leader>, <Esc>
@@ -78,18 +85,19 @@ xmap <leader>, <Esc>
 cmap <leader>, <Esc>
 omap <leader>, <Esc>
 
-"edit the .vimrc file
+" edit the vim configuration file
 nmap <leader>ev :tabedit $MYVIMRC<cr>
 
-"easier tab closing
+" edit the snippets file
+nmap <leader>es :e .vim/snippets/<cr>
+
+" easier tab closing
 imap <leader>c :tabclose<cr>
 nmap <leader>c :tabclose<cr>
 vmap <leader>c :tabclose<cr>
 
-"quicker toggling between buffers
+" quicker toggling between buffers
 nmap <leader>b <C-^>
-
-
 
 
 

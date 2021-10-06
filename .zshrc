@@ -65,8 +65,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git rsync docker)
 
+# Docker plugin autocompletion (see https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker)
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -105,6 +108,8 @@ alias sz='source ~/.zshrc'
 alias ev='vim ~/.vimrc'
 alias update='sudo apt update && apt list --upgradable'
 
+# allow interacting with version-controlled config files from anywhere
+# see https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias htop='htop -d 7.5'
@@ -115,12 +120,8 @@ alias pwd='pwd -P'
 
 alias find-big='find -type f -exec du -Sh {} + | sort -rh | head -n 5'
 
-function dwp-cli
-{
-    docker run --rm --name wp-cli-"$1" -ti --volumes-from "$1" --network container:"$1" wordpress:cli "${@:2}"
-}
-
 alias dc='docker-compose'
+alias dcreset='dcd; dcud;'
 alias dcu='dc up'
 alias dcud='dcu -d'
 alias dcuf='dcud; dcl'
@@ -132,8 +133,6 @@ alias dcl='dc logs -f'
 alias dcr='dc run --rm'
 alias ds='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}\t{{.MemUsage}}\t{{.PIDs}}"'
 alias dsa='docker stop $(docker ps -q) && docker rm $(docker ps -aq)'
-
-alias dnode='docker run --rm -ti --name node -v "$PWD/":/app -v node_modules:/app/node_modules -w /app node'
 
 # git find tag - locates the "closest" tag to a given commit
 function gft {
@@ -155,19 +154,6 @@ alias gcm='git checkout main'
 # git push including tags
 alias gpt='gp; gp --tags'
 
-# git export main to a directory
-function gem {
-    if [[ "$2" != "" ]]; then
-	BRANCH="$2"
-    else
-        BRANCH="main"
-    fi
-
-    mkdir -p "$1"
-    git archive "$BRANCH" | tar -x -C "$1"
-    cd "$1"
-}
-
 # provide autocomplete for the gem function https://unix.stackexchange.com/questions/28283/autocomplete-of-filename-in-directory
 function __gemComplete {
 	local cur={COMP_WORDS[COMP_WORD]}
@@ -176,14 +162,6 @@ function __gemComplete {
 	COMPREPLY=( "${tmp[@]// \/ }" )
 }
 complete -F __gemComplete gem
-
-# remove git submodule
-function grs {
-    git submodule deinit "$1"
-    git rm "$1"
-    git commit -m "Removed submodule $1"
-    rm -rf ".git/modules/$1"
-}
 
 # compress a video file in place
 function compress-video {
@@ -202,17 +180,6 @@ function get-sample {
 	#echo "$EXTENSION"
     	# $OCTAVE_RECORDS_FILENAME=$(basename 01\ -\ Zuill\ Bailey\ -\ BWV\ 1007\ Suite\ No.\ 1\ in\ G\ Major\ -\ Prelude.wav .wav)
 	ffmpeg -y -i "$1" -q:a 0 -ss 0 -t 30 -af "afade=t=out:st=23:d=6" "$(basename $1 .wav).mp3"
-}
-
-# runs PHP Composer in a Docker container (defaults to latest Docker image)
-function dcomposer {
-	if [[ "$1" != "" ]]; then
-		TAG="$1"
-	else
-		TAG="latest"
-	fi
-
-	docker run --rm -ti -v $(pwd):/app redisforlosers/composer:"$TAG"
 }
 
 export NVM_DIR="$HOME/.nvm"
