@@ -139,6 +139,9 @@ function gft {
     git describe --contains "$1" | cut -d '~' -f 1
 }
 
+# git tag
+alias gt='git tag'
+
 # git status only show staged files
 alias gsts='git status --short | grep '"'"'^[MARCD]'"'"''
 
