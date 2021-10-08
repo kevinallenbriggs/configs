@@ -92,8 +92,8 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# start or reconnect to a screen session on remote servers
-screen -R
+# display the screens running on the server
+if [ -z "$STY" ]; then screen -R; else screen -ls; fi
 
 export PATH=$HOME/bin:$PATH
 
@@ -157,6 +157,22 @@ alias gcm='git checkout main'
 # git push including tags
 alias gpt='gp; gp --tags'
 
+# list available GNU screen sessions
+alias sls='screen -ls'
+
+# git export main to a directory
+function gem {
+    if [[ "$2" != "" ]]; then
+	BRANCH="$2"
+    else
+        BRANCH="main"
+    fi
+
+    mkdir -p "$1"
+    git archive "$BRANCH" | tar -x -C "$1"
+    cd "$1"
+}
+
 # provide autocomplete for the gem function https://unix.stackexchange.com/questions/28283/autocomplete-of-filename-in-directory
 function __gemComplete {
 	local cur={COMP_WORDS[COMP_WORD]}
@@ -165,6 +181,14 @@ function __gemComplete {
 	COMPREPLY=( "${tmp[@]// \/ }" )
 }
 complete -F __gemComplete gem
+
+# remove git submodule
+function gsr {
+    git submodule deinit "$1"
+    git rm "$1"
+    git commit -m "Removed submodule $1"
+    rm -rf ".git/modules/$1"
+}
 
 # compress a video file in place
 function compress-video {
