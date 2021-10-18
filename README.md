@@ -8,4 +8,4 @@
 
 Install config tracking in your $HOME by running:
 
-    curl -Lks https://gist.githubusercontent.com/redisforlosers/469b44da285494342c08d6d855ad4017/raw/ee0dd68bafdc61535f28b293ba3584e3c40c1d1c/config_setup.sh | /bin/bash
+    curl -Lks https://gist.githubusercontent.com/redisforlosers/469b44da285494342c08d6d855ad4017/raw/8c93f30334999334edbec0708db0cfe09f3c8760/config_setup.sh | /bin/bash
