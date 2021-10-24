@@ -31,6 +31,11 @@ filetype plugin indent on    " required
 let g:snipMate = { 'snippet_version' : 1 }
 
 
+"--------- Snippets ---------"
+let g:snipMate = { 'snippet_version' : 1 }
+
+
+
 "--------- Visuals ---------"
 colorscheme onehalfdark
 let g:airline_theme='distinguished'
