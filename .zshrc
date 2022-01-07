@@ -156,7 +156,7 @@ alias gmm='git merge main'
 alias gcm='git checkout main'
 
 # git push including tags
-alias gpt='gp; gp --tags'
+alias gpt='gp && gp --tags'
 
 # always pull before a push
 alias gp='gl && git push'
