@@ -2,7 +2,7 @@ syntax enable 		" enable syntax highlighting
 let mapleader = ','	" namespace shortcuts with a comma
 set number		" show line numbers
 set cursorline		" highlight the line the cursor is on
-
+set clipboard=unnamedplus	" use the system clipboard
 
 
 "--------- Plugins ---------"
@@ -103,6 +103,13 @@ vmap <leader>c :tabclose<cr>
 
 " quicker toggling between buffers
 nmap <leader>b <C-^>
+
+" copy/paste from system clipboard
+" nmap <leader>y "+y
+" nmap <leader>d "+d
+" nmap <leader>Y "+y
+" nmap <leader>D "+d
+
 
 
 
