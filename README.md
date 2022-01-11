@@ -1,4 +1,4 @@
-# Dotfiles for [@kevinb](https://github.com/redisforlosers)
+# Dotfiles for [@kevinallenbriggs](https://github.com/kevinallenbriggs)
 
 ## Requirements
 
@@ -10,4 +10,4 @@
 
 Install config tracking in your $HOME by running:
 
-    curl -Lks https://gist.githubusercontent.com/redisforlosers/469b44da285494342c08d6d855ad4017/raw/8dd265719aee00978f55b8def5634c3581a3bbd3/config_setup.sh | /bin/zsh
+    curl -Lks https://gist.githubusercontent.com/kevinallenbriggs/293114f56f87fae3911b71fda7278ad0/raw/234ab546ef59835aa32df84116215d62e53c659f/config_setup.sh | /bin/zsh
