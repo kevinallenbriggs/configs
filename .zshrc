@@ -128,12 +128,13 @@ alias dcud='dcu -d'
 alias dcuf='dcud; dcl'
 alias dcd='dc down'
 alias dcdv='dcd -v'
-alias dcr='dcd && dcud'
 alias dcrv='dcdv && dcu'
-alias dcl='dc logs -f'
+alias dcl='dc logs -f $1'
 alias dcr='dc run --rm'
 alias ds='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}\t{{.MemUsage}}\t{{.PIDs}}"'
 alias dsa='docker stop $(docker ps -q) && docker rm $(docker ps -aq)'
+alias dcwp='dcr wp-cli'
+alias dcc='dcr composer'
 
 # git find tag - locates the "closest" tag to a given commit
 function gft {
@@ -161,6 +162,9 @@ alias gpt='gp && gp --tags'
 # always pull before a push
 alias gp='gl && git push'
 
+# run 'wp' commands inside docker-compose containers
+#alias wp='dcr wp-cli'
+
 # provide autocomplete for the gem function https://unix.stackexchange.com/questions/28283/autocomplete-of-filename-in-directory
 function __gemComplete {
 	local cur={COMP_WORDS[COMP_WORD]}
@@ -172,7 +176,7 @@ complete -F __gemComplete gem
 
 # compress a video file in place
 function compress-video {
-    ffmpeg -i "$1" -vcodec libx265 -acodec mp3 $(echo "$1" | cut -f 1 -d '.').mp4
+    ffmpeg -i "$1" -acodec mp3 -c:v hevc_nvenc $(echo "$1" | cut -f 1 -d '.').mp4
 }
 
 # convert files to .mp3
@@ -186,7 +190,7 @@ function get-sample {
 	#$EXTENSION="${1:-$OCTAVE_RECORDS_DEFAULT_EXT}"
 	#echo "$EXTENSION"
     	# $OCTAVE_RECORDS_FILENAME=$(basename 01\ -\ Zuill\ Bailey\ -\ BWV\ 1007\ Suite\ No.\ 1\ in\ G\ Major\ -\ Prelude.wav .wav)
-	ffmpeg -y -i "$1" -q:a 0 -ss 0 -t 30 -af "afade=t=out:st=23:d=6" "$(basename $1 .wav).mp3"
+	ffmpeg -y -i "$1" -q:a 0 -ss 0 -af "afade=t=out:st=23:d=6" "$(basename $1 .wav).mp3"
 }
 
 export NVM_DIR="$HOME/.nvm"
