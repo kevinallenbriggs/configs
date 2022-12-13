@@ -131,7 +131,7 @@ alias dcdv='dcd -v'
 alias dcrv='dcdv && dcu'
 alias dcl='dc logs -f $1'
 alias dcr='dc run --rm'
-alias dcre='dcr --entrypoint=""'
+alias dcre='dcr --entrypoint="" --user=root'
 alias ds='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}\t{{.MemUsage}}\t{{.PIDs}}"'
 alias dsa='docker stop $(docker ps -q) && docker rm $(docker ps -aq)'
 alias dcwp='dcr wp-cli'
@@ -144,6 +144,10 @@ function gft {
 
 # git tag
 alias gt='git tag'
+
+# git restore
+alias gr='git restore'
+alias grs='gr --staged'
 
 # git status only show staged files
 alias gsts='git status --short | grep '"'"'^[MARCD]'"'"''
@@ -162,6 +166,10 @@ alias gpt='gp && gp --tags'
 
 # always pull before a push
 alias gp='gl && git push'
+
+# override some of zsh git aliases
+alias gl='glol'
+alias gls='glols'
 
 # run 'wp' commands inside docker-compose containers
 #alias wp='dcr wp-cli'
